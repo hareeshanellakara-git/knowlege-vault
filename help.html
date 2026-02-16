@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Help — Knowledge Vault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=home" />
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+<!-- Navbar -->
+
+<div class="navbar">
+
+    <div id="logo">
+        <img src="logo.jpg" alt="logo">
+    </div>
+
+    <div class="navlinks">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="exam_tracker.html"><i class="fa-solid fa-chart-column"></i> Exam Tracker</a></li>
+            <li><a href="upload_bookmark.html"><i class="fa-solid fa-upload"></i> Upload & Bookmark</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+            <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
+        </ul>
+    </div>
+
+</div>
+<div class="help-container">
+
+    <h1 class="main-heading">Help & User Guide</h1>
+
+
+    <!-- HOW TO USE -->
+
+    <div class="help-box">
+
+        <h2 class="headings">How to Use Knowledge Vault</h2>
+
+        <ol>
+            <li>Navigate to the Exam Tracker to add subjects and topics.</li>
+            <li>Mark topics as completed using checkboxes.</li>
+            <li>View progress analytics on the Dashboard.</li>
+            <li>Upload study materials in Upload Notes.</li>
+            <li>Save useful links under Bookmarks.</li>
+        </ol>
+
+    </div>
+
+
+    <!-- FEATURE GUIDANCE -->
+
+    <div class="help-box">
+
+        <h2 class="headings">Feature Guidance</h2>
+
+        <ul>
+            <li>Upload PDFs and notes for centralized access.</li>
+            <li>Track syllabus completion subject-wise.</li>
+            <li>Monitor preparation using dashboard insights.</li>
+            <li>Bookmark learning playlists and articles.</li>
+        </ul>
+
+    </div>
+
+
+    <!-- FAQ SECTION -->
+
+    <h2 class="headings">Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+        <button class="faq-question">
+            How is my progress saved?
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+            Your study progress is saved using browser localStorage,
+            ensuring data persists even after refresh.
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <button class="faq-question">
+            How does Dashboard syncing work?
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+            The dashboard fetches JSON data stored by the Exam Tracker
+            and dynamically updates analytics.
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <button class="faq-question">
+            Can I edit completed topics?
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+            Yes. You can uncheck topics anytime and progress will
+            recalculate automatically.
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <button class="faq-question">
+            Are uploaded files stored permanently?
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+            Files are displayed via frontend simulation and are not
+            stored on a backend server.
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <button class="faq-question">
+            What happens if I clear browser data?
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+            All saved progress and bookmarks will be removed since
+            localStorage data is cleared.
+        </div>
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 Knowledge Vault · Built for focused learning
+</footer>
+
+
+
+<!-- FAQ DROPDOWN SCRIPT -->
+
+<script>
+
+const faqQuestions = document.querySelectorAll(".faq-question");
+
+faqQuestions.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        btn.classList.toggle("active");
+
+        const answer = btn.nextElementSibling;
+        answer.classList.toggle("show");
+
+    });
+});
+
+</script>
+
+</body>
+</html>

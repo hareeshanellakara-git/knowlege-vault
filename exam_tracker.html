@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Exam Tracker | Knowledge Vault</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+
+
+    <!-- Navbar -->
+
+    <div class="navbar">
+
+        <div id="logo">
+            <img src="logo.jpg" alt="logo">
+        </div>
+
+        <div class="navlinks">
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+                <li><a href="exam_tracker.html"><i class="fa-solid fa-chart-column"></i> Exam Tracker</a></li>
+                <li><a href="upload_bookmark.html"><i class="fa-solid fa-upload"></i> Upload & Bookmark</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="common">
+
+        <p class="main-heading">Exam Preparation Tracker</p>
+
+        <!-- ADD SUBJECT FORM -->
+        <div class="section-box">
+
+            <form id="examForm" class="exam-form">
+
+                <div class="form-group">
+                    <label>Subject / Topic</label>
+                    <input type="text" id="subjectName" class="topic-check" placeholder="Subject / Topic Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Exam Date</label>
+                    <input type="date" id="examDate" class="topic-check" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Revision Date</label>
+                    <input type="date" id="reviseDate" class="topic-check">
+                </div>
+
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="priority" class="topic-check">
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-main">Add Subject</button>
+
+            </form>
+
+        </div>
+
+        <!-- SUBJECT CARDS -->
+        <div id="subjectsGrid" class="subjects-grid"></div>
+
+    </div>
+
+    <footer>
+        <p class="text">© 2026 Knowledge Vault · Built for focused learning</p>
+    </footer>
+
+    <script src="exam_tracker.js"></script>
+
+</body>
+
+</html>

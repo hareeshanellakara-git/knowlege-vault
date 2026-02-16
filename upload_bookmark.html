@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Upload & Bookmark | Knowledge Vault</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+ <!-- Navbar -->
+
+<div class="navbar">
+
+    <div id="logo">
+        <img src="logo.jpg" alt="logo">
+    </div>
+
+    <div class="navlinks">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="exam_tracker.html"><i class="fa-solid fa-chart-column"></i> Exam Tracker</a></li>
+            <li><a href="upload_bookmark.html"><i class="fa-solid fa-upload"></i> Upload & Bookmark</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+            <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
+        </ul>
+    </div>
+
+</div>
+
+
+    <div class="common">
+
+        <p class="main-heading">Upload & Bookmark</p>
+
+        <!-- Upload Section -->
+        <section id="upload" class="section-box">
+            <h2 class="headings"><i class="fa-solid fa-upload"></i> Upload Notes</h2>
+
+            <form class="upload-form">
+                <input type="text" placeholder="Subject Name" required>
+                <input type="file" id="fileUpload" required>
+                <ul id="notesList"></ul>
+                <button type="submit" class="btn-main">Upload</button>
+            </form>
+        </section>
+
+        <!-- Bookmark Section -->
+        <section id="bookmark" class="section-box">
+            <h2 class="headings"><i class="fa-solid fa-bookmark"></i> Bookmarks</h2>
+
+            <form class="bookmark-form">
+                <input type="text" placeholder="Title (Eg: DBMS YouTube Playlist)" required>
+                <input type="url" placeholder="Paste link here" required>
+                <button type="submit" class="btn-main">Save Bookmark</button>
+            </form>
+
+            <ul class="bookmark-list">
+                <li>
+                    <i class="fa-solid fa-link"></i>
+                    DBMS Normalization Video
+                </li>
+                <li>
+                    <i class="fa-solid fa-link"></i>
+                    OS Scheduling Notes PDF
+                </li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p class="text">© 2026 Knowledge Vault · Built for focused learning</p>
+    </footer>
+    
+    <script src="upload_bookmark.js"></script>
+
+</body>
+</html>

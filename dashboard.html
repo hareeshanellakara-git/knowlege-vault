@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dashboard | Knowledge Vault</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+   <!-- Navbar -->
+
+<div class="navbar">
+
+    <div id="logo">
+        <img src="logo.jpg" alt="logo">
+    </div>
+
+    <div class="navlinks">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="exam_tracker.html"><i class="fa-solid fa-chart-column"></i> Exam Tracker</a></li>
+            <li><a href="upload_bookmark.html"><i class="fa-solid fa-upload"></i> Upload & Bookmark</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+            <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
+        </ul>
+    </div>
+
+</div>
+
+
+    <!-- Dashboard Content -->
+    <div class="common dashboard">
+
+        <!-- Welcome Section -->
+        <section class="dashboard-welcome">
+            <h1>Dashboard</h1>
+            <p class="text">
+                Your central space to manage notes, track exam preparation, and monitor progress.
+            </p>
+        </section>
+
+        <!-- Today's Focus -->
+        <section class="focus-box">
+            <h3>Today's Focus</h3>
+            <p id="todayFocus">No subjects yet</p>
+            <span class="focus-tag" id="focusPriority">—</span>
+        </section>
+
+        <!-- Quick Actions -->
+        <section>
+            <p class="headings">Quick Actions</p>
+
+            <div class="dashboard-actions">
+                <a href="upload_bookmark.html" class="dashboard-card">
+                    <i class="fa-solid fa-upload"></i>
+                    <h3>Upload Notes</h3>
+                </a>
+
+                <a href="exam_tracker.html" class="dashboard-card">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <h3>Exam Tracker</h3>
+                </a>
+
+                <a href="upload_bookmark.html" class="dashboard-card">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <h3>Bookmarks</h3>
+                </a>
+
+                <a href="#" class="dashboard-card">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <h3>Study Overview</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- Study Progress Overview -->
+        <section>
+            <p class="headings">Study Progress Overview</p>
+
+            <div class="progress-cards">
+                <div class="progress-box">
+                    <h3>Total Subjects</h3>
+                    <p id="totalSubjects">0</p>
+                </div>
+
+                <div class="progress-box">
+                    <h3>Completed</h3>
+                    <p id="completedSubjects">0</p>
+                </div>
+
+                <div class="progress-box">
+                    <h3>Pending</h3>
+                    <p id="pendingSubjects">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overall Completion -->
+        <section class="overall-progress">
+            <p class="headings">Overall Completion</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallBar"></div>
+            </div>
+
+            <p class="text" id="overallText">0% completed</p>
+        </section>
+
+        
+
+        <!-- Upcoming Exams -->
+        <section class="upcoming">
+            <p class="headings">Upcoming Exams</p>
+            <ul id="upcomingList"></ul>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <p class="headings">Recent Activity</p>
+            <ul id="activityList"></ul>
+        </section>
+
+        
+
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="text">© 2026 Knowledge Vault · Built for focused learning</p>
+    </footer>
+
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
