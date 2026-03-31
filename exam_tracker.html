@@ -5,7 +5,7 @@
     <title>Exam Tracker | Knowledge Vault</title>
 
     <link rel="stylesheet" href="style.css">
-
+    <link rel="icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -19,12 +19,7 @@
     <!-- Navbar -->
 
     <div class="navbar">
-
-        <div id="logo">
-            <img src="logo.jpg" alt="logo">
-        </div>
-
-        <div class="navlinks">
+        <div class="navlinks" id="navLinks">
             <ul>
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
@@ -34,13 +29,32 @@
                 <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
             </ul>
         </div>
+        <div id="logo">
+            <img src="logo.jpg" alt="logo">
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            ☰
+            
+        </div>
 
+        <button id="darkToggle" onclick="toggleDark()" title="Toggle Dark Mode">🌙</button>
     </div>
 
 
     <div class="common">
 
         <p class="main-heading">Exam Preparation Tracker</p>
+
+        <!-- STREAK -->
+        <div class="streak-wrapper">
+            <div class="streak-box">
+                <span id="streakCount">0</span> Day Streak
+            </div>
+        </div>
+        <div class="demo-buttons">
+            <button onclick="demoNormal()">Normal</button>
+            <button onclick="demoGolden()">Golden 🔥</button>
+        </div>
 
         <!-- ADD SUBJECT FORM -->
         <div class="section-box">
@@ -76,6 +90,12 @@
             </form>
 
         </div>
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchBox" placeholder="Search subjects...">
+            <span class="clear-btn" onclick="clearSearch()">✖</span>
+        </div>
 
         <!-- SUBJECT CARDS -->
         <div id="subjectsGrid" class="subjects-grid"></div>
@@ -83,11 +103,31 @@
     </div>
 
     <footer>
-        <p class="text">© 2026 Knowledge Vault · Built for focused learning</p>
+        <p class="text">© 2026 Knowledge Vault · Designed and Developed by Hareesha Nellakara</p>
     </footer>
 
     <script src="exam_tracker.js"></script>
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function () {
+            this.classList.toggle('open');
+            document.getElementById('navLinks').classList.toggle('open');
+        });
 
+        function toggleDark() {
+            const isDark = document.body.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+            document.getElementById('darkToggle').textContent = isDark ? '☀️' : '🌙';
+        }
+
+        // On page load — restore saved preference
+        (function () {
+            if (localStorage.getItem('darkMode') === 'on') {
+                document.body.classList.add('dark');
+                const btn = document.getElementById('darkToggle');
+                if (btn) btn.textContent = '☀️';
+            }
+        })();
+    </script>
 </body>
 
 </html>

@@ -1,71 +1,79 @@
-const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
-const stats = JSON.parse(localStorage.getItem("stats")) || {};
-const activities = JSON.parse(localStorage.getItem("activities")) || [];
 
-/* ---------- STATS ---------- */
 
-document.getElementById("totalSubjects").textContent =
-    stats.total || 0;
 
-document.getElementById("completedSubjects").textContent =
-    stats.completed || 0;
+fetch('http://localhost:3000/data')
+    .then(res => res.json())
+    .then(data => {
 
-document.getElementById("pendingSubjects").textContent =
-    stats.pending || 0;
+        const subjects = data.subjects || [];
+        const stats = data.stats || {};
+        const activities = data.activities || [];
 
-/* ---------- OVERALL BAR ---------- */
 
-const overall = stats.overall || 0;
+        /* ---------- STREAK ---------- */
 
-document.getElementById("overallBar").style.width =
-    overall + "%";
 
-document.getElementById("overallText").textContent =
-    overall + "% syllabus completed";
+        const streak = data.streak || 0;
 
-/* ---------- TODAY FOCUS ---------- */
+        const streakEl = document.getElementById("streakCount");
+        if (streakEl) {
+            streakEl.textContent = streak;
 
-if(subjects.length>0){
+            if (streak >= 7) {
+                streakEl.classList.add("golden");
+            }
+            else {
+                streakEl.classList.remove("golden");
+            }
+        }
 
-    const sorted = [...subjects].sort(
-        (a,b)=> new Date(a.examDate)-new Date(b.examDate)
-    );
+        /* ---------- STATS ---------- */
 
-    const focus = sorted[0];
+        document.getElementById("totalSubjects").textContent = stats.total || 0;
+        document.getElementById("completedSubjects").textContent = stats.completed || 0;
+        document.getElementById("pendingSubjects").textContent = stats.pending || 0;
 
-    document.getElementById("todayFocus").textContent =
-        focus.name;
+        /* ---------- OVERALL BAR ---------- */
 
-    document.getElementById("focusPriority").textContent =
-        focus.priority;
-}
+        const overall = stats.overall || 0;
 
-/* ---------- UPCOMING EXAMS ---------- */
+        document.getElementById("overallBar").style.width = overall + "%";
+        document.getElementById("overallText").textContent = overall + "% syllabus completed";
 
-const upcomingList = document.getElementById("upcomingList");
+        /* ---------- TODAY FOCUS ---------- */
 
-subjects
-.sort((a,b)=> new Date(a.examDate)-new Date(b.examDate))
-.slice(0,5)
-.forEach(sub=>{
+        if (subjects.length > 0) {
+            const sorted = [...subjects].sort((a, b) => new Date(a.examDate) - new Date(b.examDate));
+            const focus = sorted[0];
 
-    const li = document.createElement("li");
+            document.getElementById("todayFocus").textContent = focus.name;
+            document.getElementById("focusPriority").textContent = focus.priority;
+        }
 
-    li.innerHTML = `
-        ${sub.name}
-        <span class="date">${sub.examDate}</span>
-    `;
+        /* ---------- UPCOMING ---------- */
 
-    upcomingList.appendChild(li);
-});
+        const upcomingList = document.getElementById("upcomingList");
 
-/* ---------- RECENT ACTIVITY ---------- */
+        subjects
+            .sort((a, b) => new Date(a.examDate) - new Date(b.examDate))
+            .slice(0, 5)
+            .forEach(sub => {
+                const li = document.createElement("li");
+                li.innerHTML = `${sub.name} <span class="date">${sub.examDate}</span>`;
+                upcomingList.appendChild(li);
+            });
 
-const actList = document.getElementById("activityList");
+        /* ---------- ACTIVITY ---------- */
 
-activities.forEach(act=>{
+        const actList = document.getElementById("activityList");
 
-    const li = document.createElement("li");
-    li.textContent = act;
-    actList.appendChild(li);
-});
+        activities.forEach(act => {
+            const li = document.createElement("li");
+            li.textContent = act;
+            actList.appendChild(li);
+        });
+
+    });
+
+
+

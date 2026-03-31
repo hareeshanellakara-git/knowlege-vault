@@ -3,7 +3,7 @@
 
 <head>
     <title>Dashboard | Knowledge Vault</title>
-
+    <link rel="icon" href="logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,26 +15,30 @@
 
 <body>
 
-   <!-- Navbar -->
+    <!-- Navbar -->
 
-<div class="navbar">
+    <div class="navbar">
+        <div class="navlinks" id="navLinks">
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+                <li><a href="exam_tracker.html"><i class="fa-solid fa-chart-column"></i> Exam Tracker</a></li>
+                <li><a href="upload_bookmark.html"><i class="fa-solid fa-upload"></i> Upload & Bookmark</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
+            </ul>
+        </div>
+        <div id="logo">
+            <img src="logo.jpg" alt="logo">
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            ☰
+        
+            
+        </div>
+        <button id="darkToggle" onclick="toggleDark()" title="Toggle Dark Mode">🌙</button>
 
-    <div id="logo">
-        <img src="logo.jpg" alt="logo">
     </div>
-
-    <div class="navlinks">
-        <ul>
-            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
-            <li><a href="exam_tracker.html"><i class="fa-solid fa-chart-column"></i> Exam Tracker</a></li>
-            <li><a href="upload_bookmark.html"><i class="fa-solid fa-upload"></i> Upload & Bookmark</a></li>
-            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
-            <li><a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a></li>
-        </ul>
-    </div>
-
-</div>
 
 
     <!-- Dashboard Content -->
@@ -47,6 +51,12 @@
                 Your central space to manage notes, track exam preparation, and monitor progress.
             </p>
         </section>
+
+        <div class="streak-wrapper">
+            <div class="streak-box">
+                Study Streak: <span id="streakCount">0</span> days
+            </div>
+        </div>
 
         <!-- Today's Focus -->
         <section class="focus-box">
@@ -115,7 +125,7 @@
             <p class="text" id="overallText">0% completed</p>
         </section>
 
-        
+
 
         <!-- Upcoming Exams -->
         <section class="upcoming">
@@ -129,7 +139,7 @@
             <ul id="activityList"></ul>
         </section>
 
-        
+
 
 
 
@@ -137,12 +147,31 @@
 
     <!-- Footer -->
     <footer>
-        <p class="text">© 2026 Knowledge Vault · Built for focused learning</p>
+        <p class="text">© 2026 Knowledge Vault · Designed and Developed by Hareesha Nellakara</p>
     </footer>
 
 
     <script src="dashboard.js"></script>
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function () {
+            this.classList.toggle('open');
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+        function toggleDark() {
+            const isDark = document.body.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+            document.getElementById('darkToggle').textContent = isDark ? '☀️' : '🌙';
+        }
 
+        // On page load — restore saved preference
+        (function () {
+            if (localStorage.getItem('darkMode') === 'on') {
+                document.body.classList.add('dark');
+                const btn = document.getElementById('darkToggle');
+                if (btn) btn.textContent = '☀️';
+            }
+        })();
+    </script>
 </body>
 
 </html>

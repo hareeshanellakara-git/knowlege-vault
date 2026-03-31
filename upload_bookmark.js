@@ -1,6 +1,4 @@
-
 // UPLOAD NOTES
-
 
 let uploadForm = document.querySelector(".upload-form");
 let uploadList = document.createElement("ul");
@@ -8,13 +6,43 @@ uploadList.className = "upload-list";
 
 document.querySelector("#upload").appendChild(uploadList);
 
+let uploads = [];
+let bookmarks = [];
 
-// Load saved uploads
-let uploads = JSON.parse(localStorage.getItem("uploads")) || [];
-displayUploads();
+/* -------- LOAD FROM BACKEND -------- */
+
+fetch('http://localhost:3000/data')
+.then(res => res.json())
+.then(data => {
+    uploads = data.uploads || [];
+    bookmarks = data.bookmarks || [];
+    displayUploads();
+    displayBookmarks();
+});
 
 
-// Upload submit
+/* -------- SAVE FUNCTION -------- */
+
+function saveToBackend(){
+
+    fetch('http://localhost:3000/data')
+    .then(res => res.json())
+    .then(data => {
+
+        data.uploads = uploads;
+        data.bookmarks = bookmarks;
+
+        fetch('http://localhost:3000/data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    });
+}
+
+
+/* -------- UPLOAD SUBMIT -------- */
+
 uploadForm.addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -28,14 +56,16 @@ uploadForm.addEventListener("submit", function(e){
     };
 
     uploads.push(uploadData);
-    localStorage.setItem("uploads", JSON.stringify(uploads));
+
+    saveToBackend();   // 🔥 CHANGED
 
     displayUploads();
     uploadForm.reset();
 });
 
 
-// Display uploads
+/* -------- DISPLAY UPLOADS -------- */
+
 function displayUploads(){
 
     uploadList.innerHTML = "";
@@ -55,32 +85,31 @@ function displayUploads(){
 }
 
 
-// Delete upload
+/* -------- DELETE UPLOAD -------- */
+
 uploadList.addEventListener("click", function(e){
 
     if(e.target.classList.contains("delete-btn")){
         let index = e.target.getAttribute("data-index");
         uploads.splice(index, 1);
-        localStorage.setItem("uploads", JSON.stringify(uploads));
+
+        saveToBackend();   // 🔥 CHANGED
+
         displayUploads();
     }
 });
 
 
-
-// BOOKMARKS
-
+/* ===============================
+   BOOKMARKS
+================================ */
 
 let bookmarkForm = document.querySelector(".bookmark-form");
 let bookmarkList = document.querySelector(".bookmark-list");
 
 
-// Load saved bookmarks
-let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-displayBookmarks();
+/* -------- BOOKMARK SUBMIT -------- */
 
-
-// Bookmark submit
 bookmarkForm.addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -93,14 +122,16 @@ bookmarkForm.addEventListener("submit", function(e){
     };
 
     bookmarks.push(bookmarkData);
-    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+
+    saveToBackend();   // 🔥 CHANGED
 
     displayBookmarks();
     bookmarkForm.reset();
 });
 
 
-// Display bookmarks
+/* -------- DISPLAY BOOKMARKS -------- */
+
 function displayBookmarks(){
 
     bookmarkList.innerHTML = "";
@@ -120,15 +151,16 @@ function displayBookmarks(){
 }
 
 
-// Delete bookmark
+/* -------- DELETE BOOKMARK -------- */
+
 bookmarkList.addEventListener("click", function(e){
 
     if(e.target.classList.contains("delete-btn")){
         let index = e.target.getAttribute("data-index");
         bookmarks.splice(index, 1);
-        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+
+        saveToBackend();   // 🔥 CHANGED
+
         displayBookmarks();
     }
 });
-
-
