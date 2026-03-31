@@ -4,10 +4,13 @@ const fs = require('fs');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(express.json());
 
-const FILE = 'data.json';
+const path = require('path');
+const FILE = path.join(__dirname, 'data.json');
 
 /* ---------- GET ALL DATA ---------- */
 
@@ -58,6 +61,8 @@ app.get('/', (req, res) => {
 
 /* ---------- START SERVER ---------- */
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
