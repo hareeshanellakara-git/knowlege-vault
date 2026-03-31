@@ -11,7 +11,7 @@ let bookmarks = [];
 
 /* -------- LOAD FROM BACKEND -------- */
 
-fetch('http://localhost:3000/data')
+fetch('https://knowledge-vault-backend-u9t7.onrender.com/data')
 .then(res => res.json())
 .then(data => {
     uploads = data.uploads || [];
@@ -25,14 +25,14 @@ fetch('http://localhost:3000/data')
 
 function saveToBackend(){
 
-    fetch('http://localhost:3000/data')
+    fetch('https://knowledge-vault-backend-u9t7.onrender.com/data')
     .then(res => res.json())
     .then(data => {
 
         data.uploads = uploads;
         data.bookmarks = bookmarks;
 
-        fetch('http://localhost:3000/data', {
+        fetch('https://knowledge-vault-backend-u9t7.onrender.com/data', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

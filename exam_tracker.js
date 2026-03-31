@@ -9,7 +9,7 @@ let streak = 0;
 let lastActiveDate = null;
 
 // Load from backend
-fetch('http://localhost:3000/data')
+fetch('https://knowledge-vault-backend-u9t7.onrender.com/data')
     .then(res => res.json())
     .then(data => {
         streak = data.streak || 0;
@@ -20,7 +20,7 @@ fetch('http://localhost:3000/data')
 
 
 // Load from backend
-fetch('http://localhost:3000/data')
+fetch('https://knowledge-vault-backend-u9t7.onrender.com/data')
     .then(res => res.json())
     .then(data => {
         subjects = data.subjects || [];
@@ -137,11 +137,11 @@ function save() {
     const stats = { total, completed, pending, overall };
 
     // FIRST get existing data
-    fetch('http://localhost:3000/data')
+    fetch('https://knowledge-vault-backend-u9t7.onrender.com/data')
         .then(res => res.json())
         .then(data => {
 
-            fetch('http://localhost:3000/data', {
+            fetch('https://knowledge-vault-backend-u9t7.onrender.com/data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

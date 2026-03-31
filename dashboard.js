@@ -1,7 +1,7 @@
 
 
 
-fetch('http://localhost:3000/data')
+fetch('https://knowledge-vault-backend-u9t7.onrender.com/data')
     .then(res => res.json())
     .then(data => {
 
