@@ -1,3 +1,8 @@
+## 🔗 Live Demo
+
+https://knowlege-vault.vercel.app/
+
+
 # 📚 Knowledge Vault
 
 Knowledge Vault is a full-stack student productivity web application designed to help users organize study resources, track exam preparation, and stay consistent with their learning — all in one structured platform.
